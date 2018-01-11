@@ -12,4 +12,8 @@
 */
 
 Route::get('/', 'PinterestController@show');
-Route::get('/pins', 'PinterestController@pins');
+Route::post('/pins', 'PinterestController@pins');
+
+Route::group(['middleware' => 'use.ssl'], function(){
+	Route::get('/access', 'PinterestController@access');
+});
